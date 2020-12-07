@@ -13,24 +13,24 @@ def read():
     all_tasks = Tasks.query.all()
     tasks_string = ""
     for task in all_tasks:
-        tasks_string += "<br>" + task.name +  task.completed
+        tasks_string += "<br>" + task.name + "  " +   str(task.completed)
     return tasks_string
 
-@app.route(/update/<name>/<newname>)
+@app.route('/update/<name>/<newname>')
 def update(name, newname):
     task = Task.query.filter_by(name=name).first()
     task.name = newname
     db.session.commit()
     return task.name
 
-@app.route(/status/<name>/<status>)
+@app.route('/status/<name>/<status>')
 def status(name, status):
       task = Task.query.filter_by(name=name).first()
-      task.completed = status
+      task.completed = status == "true"
       db.session.commit()
       return task.completed
 
-@app.route(/delete/<name>)
+@app.route('/delete/<name>')
 def delete(name):
     task_to_delete = Tasks.query.filter_by(name=name).first()
     db.session.delete(task_to_delete)
