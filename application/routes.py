@@ -40,4 +40,12 @@ def delete(id):
     db.session.delete(task_to_delete)
     db.session.commit()
     return redirect(url_for("home"))
- 
+
+
+@app.route("/status/<int:id>/<newstatus>", methods =['GET', 'POST'])
+def status(id, newstatus):
+    form = TaskForm()
+    task = Tasks.query.filter_by(id=id).first()
+    task.completed = newstatus == "True"
+    db.session.commit()
+    return redirect(url_for("home"))

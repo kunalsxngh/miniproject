@@ -12,6 +12,9 @@
     <form action ="{{url_for('delete', id=task.id) }}">
         <input type =submit value="Delete">
     </form>
+    <form action="{{url_for('status', id=task.id, newstatus=True) }}">
+        <input type=submit value="Task Complete">
+    </form>
     <br>
     {% endif %}
 {% endfor %}
@@ -27,6 +30,9 @@
     </form>
     <form action ="{{url_for('delete', id=task.id) }}">
         <input type =submit value="Delete">
+    </form>
+    <form action="{{url_for('status', id=task.id, newstatus=False) }}">
+        <input type=submit value="Task Incomplete">
     </form>
     <br>
     {% endif %}

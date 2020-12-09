@@ -1,0 +1,4 @@
+selenium==3.141.0
+Flask-Testing==0.8.0
+pytest==6.1.2
+Werkzeug==0.16.1
